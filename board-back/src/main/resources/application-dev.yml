@@ -1,0 +1,6 @@
+
+spring:
+    datasource: 
+        url: jdbc:mariadb://193.123.227.177:3306/web
+        username: devyne
+        password: 991204
