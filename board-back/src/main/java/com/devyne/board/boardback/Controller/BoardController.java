@@ -12,6 +12,7 @@ import com.devyne.board.boardback.Service.BoardService;
 import com.devyne.board.boardback.VO.BoardVO;
 
 
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
@@ -29,5 +30,8 @@ public class BoardController {
     public List<BoardVO> selBoardList() {
         return boardService.selBoardList();
     }
+
+   
+    
     
 }

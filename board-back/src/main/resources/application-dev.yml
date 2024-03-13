@@ -1,11 +1,8 @@
+mybatis: 
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.devyne.board.boardback.VO
 
-spring:
-    datasource: 
-        url: jdbc:mariadb://193.123.227.177:3306/web
-        username: devyne
-        password: 991204
-        driver-class-name: org.mariadb.jdbc.Driver
-
+    
     
 
 

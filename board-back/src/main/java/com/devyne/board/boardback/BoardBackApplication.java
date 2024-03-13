@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.devyne.board"})
+@ComponentScan(basePackages = {"com.devyne.board.boardback"})
 public class BoardBackApplication {
 
 	public static void main(String[] args) {

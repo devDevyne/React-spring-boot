@@ -28,4 +28,7 @@ public class BoardVO {
     @Column(name = "MOD_DATE")
     private String modDate;
 
+    @Column(name = "CONTENTS")
+    private String contents;
+
 }

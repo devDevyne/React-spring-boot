@@ -2,11 +2,16 @@
 spring:
     profiles:
         active: dev
-    jpa:
-      hibernate:
-        naming:
-          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-
+    datasource: 
+        url: jdbc:mariadb://193.123.227.177:3306/web
+        username: devyne
+        password: 991204
+        driver-class-name: org.mariadb.jdbc.Driver
+    devtools:
+        livereload:     
+            enabled: true
+        restart:
+            enabled: true 
 server:
   port: 8080
 
