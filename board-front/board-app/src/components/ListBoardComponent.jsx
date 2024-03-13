@@ -23,27 +23,31 @@ class ListBoardComponent extends Component {
             <div>
                 <h2 className='text-center'>Boards List</h2>
                 <div className='row'>
-                    <talbe className="table talbe-striped talbe-bordered">
-                        <thread>
+                    <table className="table talbe-striped talbe-bordered">
+                        <thead>
                             <tr>
                                 <th>글 번호</th>
                                 <th>글 제목</th>
                                 <th>작성자</th>
+                                <th>작성일자</th>
+                                <th>수정일자</th>
                             </tr>
-                        </thread>
+                        </thead>
                         <tbody>
                             {
                                 this.state.board.map(
                                     board =>
-                                    <tr key = {board.no}>
-                                        <td>{board.no}</td>
+                                    <tr key = {board.boardIdx}>
+                                        <td>{board.boardIdx}</td>
                                         <td>{board.title}</td>
                                         <td>{board.author}</td>
+                                        <td>{board.regDate}</td>
+                                        <td>{board.modDate}</td>
                                     </tr>
                                 )
                             }
                         </tbody>
-                    </talbe>
+                    </table>
                 </div>
             </div>
         );

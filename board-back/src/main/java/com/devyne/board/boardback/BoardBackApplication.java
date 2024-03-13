@@ -2,21 +2,14 @@ package com.devyne.board.boardback;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.ComponentScan;
 
-
-@RestController
 @SpringBootApplication
+@ComponentScan(basePackages = {"com.devyne.board"})
 public class BoardBackApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BoardBackApplication.class, args);
 	}
 
-	@RequestMapping("/")
-	public String home() {
-		return "hello world spring";
-	}
-	
 }
