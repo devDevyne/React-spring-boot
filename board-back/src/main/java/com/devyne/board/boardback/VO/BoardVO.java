@@ -1,5 +1,7 @@
 package com.devyne.board.boardback.VO;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data

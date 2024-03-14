@@ -35,5 +35,10 @@ public class BoardController {
     public void insBoard(@RequestBody BoardVO boardVO) {
         boardService.insBoard(boardVO);
     }
-    
+
+    @GetMapping("/boardDetail")
+    public BoardVO selBoardDetail(BoardVO boardVO) {
+        return boardService.selBoardDetail(boardVO);
+    }
+
 }

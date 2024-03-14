@@ -23,4 +23,9 @@ public class BoardService {
         return boardMapper.insBoard(boardVO);
     }
 
+    public BoardVO selBoardDetail(BoardVO boardVO) {
+        return boardMapper.selBoardDetail(boardVO);
+    }
+
+
 }

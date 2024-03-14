@@ -4,6 +4,8 @@ import ListBoardComponent from "./components/ListBoardComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from './components/FooterComponent';
 import InsBoardComponent from './components/InsBoardComponent';
+import ListBoardTabulator from './components/ListBoardTabulator';
+import BoardDetailComponent from './components/BoardDetailComponent';
 
 function App() {
   return (
@@ -12,9 +14,11 @@ function App() {
         <HeaderComponent />
         <div className='container'>
           <Routes>
-            <Route path='/' element={<ListBoardComponent />} />
-            <Route path='/board' element={<ListBoardComponent />} />
+            <Route path='/' element={<ListBoardTabulator />} />
+            <Route path='/boardList' element={<ListBoardComponent />} />
             <Route path='/insBoard' element={<InsBoardComponent />} />
+            <Route path='/board' element={<ListBoardTabulator />} />
+            <Route path='/boardDetail' element={<BoardDetailComponent />} />
           </Routes>
         </div>
         <FooterComponent />

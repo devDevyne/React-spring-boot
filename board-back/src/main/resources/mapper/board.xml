@@ -10,8 +10,14 @@
 
     <insert id="insBoard" parameterType="BoardVO">
         INSERT INTO 
-        BOARD (title, author, type, regDate, modDate, contents)
-        VALUES (#{title}, #{author}, #{type}, now(), now(), #{contents})
+        BOARD (title, author, type, regDate, modDate contents)
+        VALUES (#{title}, #{author}, #{type}, #{regDate}, #{regDate}, #{contents})
     </insert>
+
+    <select id="selBoardDetail" parameterType="BoardVO" resultType="BoardVO">
+        SELECT boardIdx, title, author, type, regDate, modDate, contents
+        FROM BOARD
+        WHERE boardIdx = #{boardIdx}
+    </select>
     
 </mapper> 

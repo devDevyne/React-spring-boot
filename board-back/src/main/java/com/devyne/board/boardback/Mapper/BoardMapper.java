@@ -12,4 +12,6 @@ public interface BoardMapper {
     List<BoardVO> selBoardList();
     
     int insBoard(BoardVO boardVO);
+
+    BoardVO selBoardDetail(BoardVO boardVO);
 }

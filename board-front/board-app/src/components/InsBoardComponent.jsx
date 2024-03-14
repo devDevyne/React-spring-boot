@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BoardService from '../service/BoardService';
+import ToastEditor from './ToastEditor';
 
 class InsBoardComponent extends Component {
 
@@ -11,7 +12,8 @@ class InsBoardComponent extends Component {
             type: '',
             title: '',
             contents: '',
-            author: ''
+            author: '',
+            regDate: new Date().toLocaleString()
         }
 
         // 값이 입력되면, this.state의 변수값이 변경되도록 bind
@@ -44,12 +46,12 @@ class InsBoardComponent extends Component {
             type: this.state.type,
             title: this.state.title,
             contents: this.state.contents,
-            author: this.state.author
+            author: this.state.author,
+            regDate: this.state.regDate
         }; 
         // board에 입력한 정보 저장.
         // 파라미터로 보냄. 
-        // 그리고 board로 돌아옴. 
-
+        // 그리고 board로 이동.  
         BoardService.insBoard(board).then(res => {
             window.location.href = "/board";
         });
@@ -72,7 +74,7 @@ class InsBoardComponent extends Component {
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">
-                                        <label> Type </label>
+                                        <label> 카테고리 </label>
                                         <select placeholder="type" name="type" className="form-control" 
                                         value={this.state.type} onChange={this.changeTypeHandler}>
                                             <option value="1">자유게시판</option>
@@ -80,19 +82,19 @@ class InsBoardComponent extends Component {
                                         </select>
                                     </div>
                                     <div className = "form-group">
-                                        <label> Title </label>
+                                        <label> 글 제목 </label>
                                         <input type="text" placeholder="title" name="title" className="form-control" 
                                         value={this.state.title} onChange={this.changeTitleHandler}/>
                                     </div>
                                     <div className = "form-group">
-                                        <label> Contents  </label>
-                                        <textarea placeholder="contents" name="contents" className="form-control" 
-                                        value={this.state.contents} onChange={this.changeContentsHandler}/>
-                                    </div>
-                                    <div className = "form-group">
-                                        <label> Author  </label>
+                                        <label> 작성자  </label>
                                         <input placeholder="author" name="author" className="form-control" 
                                         value={this.state.author} onChange={this.changeAuthorHandler}/>
+                                    </div>
+                                    <div className = "form-group">
+                                        <label> 내용  </label>
+                                        <textarea placeholder="contents" name="contents" className="form-control" 
+                                        value={this.state.contents} onChange={this.changeContentsHandler}/>
                                     </div>
                                     <div style={{marginTop:"10px", float:'right'}}>
                                         <button className="btn btn-success" onClick={this.insBoard}>Save</button>
