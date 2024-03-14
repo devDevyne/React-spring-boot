@@ -19,4 +19,8 @@ public class BoardService {
         return boardMapper.selBoardList();
     }
 
+    public int insBoard(BoardVO boardVO) {
+        return boardMapper.insBoard(boardVO);
+    }
+
 }

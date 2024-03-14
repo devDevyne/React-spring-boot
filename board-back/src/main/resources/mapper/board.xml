@@ -5,13 +5,13 @@
 <mapper namespace="com.devyne.board.boardback.Mapper.BoardMapper">
 
     <select id="selBoardList" resultType="BoardVO">
-        SELECT BOARD_IDX, TITLE, AUTHOR, REG_DATE, MOD_DATE FROM BOARD
+        SELECT boardIdx, title, author, regDate, modDate FROM BOARD
     </select>
 
     <insert id="insBoard" parameterType="BoardVO">
         INSERT INTO 
-        BOARD (TITLE, AUTHOR, REG_DATE, MOD_DATE, CONTENTS)
-        VALUES (#{title}, #{author}, now(), now(), #{contents})
+        BOARD (title, author, type, regDate, modDate, contents)
+        VALUES (#{title}, #{author}, #{type}, now(), now(), #{contents})
     </insert>
     
-</mapper>
+</mapper> 

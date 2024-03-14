@@ -39,7 +39,7 @@ class InsBoardComponent extends Component {
     }
 
     insBoard = (event) => {
-        event.preventDefault();
+        event.preventDefault();  
         let board = {
             type: this.state.type,
             title: this.state.title,
