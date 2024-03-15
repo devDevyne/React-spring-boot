@@ -11,7 +11,7 @@ class BoardDetailComponent extends Component {
             boardIdx: window.location.href.split('=')[1],
         }
 
-        this.goBack = this.goBack.bind(this);
+        this.goUdtBoard = this.goUdtBoard.bind(this);
     }
 
     componentDidMount() {
@@ -20,9 +20,10 @@ class BoardDetailComponent extends Component {
         });
     }
 
-    goBack() {
-        window.location.href = "/board";
-    }
+    goUdtBoard = ()=> {
+        const boardIdx = this.state.boardIdx;
+        window.location.href = `/udtBoard?boardIdx=${boardIdx}`;
+    };
 
     render() {
         return (
@@ -30,7 +31,6 @@ class BoardDetailComponent extends Component {
                 <div className='card col-md-6 offset-md-3'>
                     <h3 className='text-center'>Board Details</h3>
                     <div className='card-body'>
-                        <from>
                             <input type='hidden' name="boardIdx" value={this.state.board.boardIdx} />
                             <div className='form-group'>
                                 <label> 카테고리 </label>
@@ -65,10 +65,9 @@ class BoardDetailComponent extends Component {
                                     value={this.state.board.contents} style={{ resize: 'none' }} />
                             </div>
                             <div style={{marginTop:"10px", float:'right'}}>
-                                <button type='button' className='btn btn-primary'>수정하기</button>
-                                <button type='button' className="btn btn-success" onClick={this.goBack} style={{marginLeft:"10px"}}>목록으로</button>
+                                <button type='button' className='btn btn-primary' onClick={this.goUdtBoard} >수정하기</button>
+                                <button type='button' className="btn btn-success" onClick={()=> {window.location.href='/board'}} style={{marginLeft:"10px"}}>목록으로</button>
                             </div>
-                        </from>
                     </div>
                 </div>
             </div>
@@ -76,4 +75,4 @@ class BoardDetailComponent extends Component {
     }
 }
 
-export default BoardDetailComponent;
+export default BoardDetailComponent; 

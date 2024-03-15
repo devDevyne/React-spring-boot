@@ -1,6 +1,7 @@
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Editor } from '@toast-ui/react-editor';
 import React, { Component } from 'react';
 import BoardService from '../service/BoardService';
-import ToastEditor from './ToastEditor';
 
 class InsBoardComponent extends Component {
 
@@ -16,8 +17,10 @@ class InsBoardComponent extends Component {
             regDate: new Date().toLocaleString()
         }
 
+        
+
         // 값이 입력되면, this.state의 변수값이 변경되도록 bind
-        this.changeTypeHandler = this.changeTypeHandler.bind(this); // bind 
+        this.changeTypeHandler = this.changeTypeHandler.bind(this); 
         this.changeTitleHandler = this.changeTitleHandler.bind(this);
         this.changeContentsHandler = this.changeContentsHandler.bind(this);
         this.changeAuthorHandler = this.changeAuthorHandler.bind(this);
@@ -33,7 +36,7 @@ class InsBoardComponent extends Component {
     }
 
     changeContentsHandler = (event) => {
-        this.setState({contents: event.target.value});
+        this.setState({contents: this.inputContents.getInstance().getHTML() })
     }
 
     changeAuthorHandler = (event) => {
@@ -42,6 +45,7 @@ class InsBoardComponent extends Component {
 
     insBoard = (event) => {
         event.preventDefault();  
+
         let board = {
             type: this.state.type,
             title: this.state.title,
@@ -49,18 +53,12 @@ class InsBoardComponent extends Component {
             author: this.state.author,
             regDate: this.state.regDate
         }; 
-        // board에 입력한 정보 저장.
-        // 파라미터로 보냄. 
-        // 그리고 board로 이동.  
+
+        //console.log(board.contents);
+
         BoardService.insBoard(board).then(res => {
             window.location.href = "/board";
         });
-    }
-
-    cancel() {
-        if(window.confirm("글 작성을 취소하시겠습니까?")) {
-            window.location.href = "/board";
-        }
     }
 
     render() {
@@ -93,12 +91,26 @@ class InsBoardComponent extends Component {
                                     </div>
                                     <div className = "form-group">
                                         <label> 내용  </label>
-                                        <textarea placeholder="contents" name="contents" className="form-control" 
-                                        value={this.state.contents} onChange={this.changeContentsHandler}/>
+                                        {/* <textarea placeholder="contents" name="contents" className="form-control" 
+                                        value={this.state.contents} onChange={this.changeContentsHandler}/> */}
+                                        <Editor
+                                            ref={(ref) => (this.inputContents = ref)}
+                                            previewStyle='vertical'
+                                            height='600px'
+                                            initialEditType='wysiwyg'
+                                            useCommandShortcut={true}
+                                            language='ko-KR'
+                                            name = "contents"
+                                            onChange={this.changeContentsHandler}
+                                        />
                                     </div>
                                     <div style={{marginTop:"10px", float:'right'}}>
                                         <button className="btn btn-success" onClick={this.insBoard}>Save</button>
-                                        <button type='button' className="btn btn-danger" onClick={this.cancel} style={{marginLeft:"10px"}}>Cancel</button>
+                                        <button type='button' className="btn btn-danger" onClick={ ()=> {
+                                            if(window.confirm("글 작성을 취소하시겠습니까?")) {
+                                                window.location.href = "/board";
+                                            }
+                                        }} style={{marginLeft:"10px"}}>Cancel</button>
                                     </div>
                                 </form>
                             </div>

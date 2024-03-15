@@ -6,6 +6,7 @@ import FooterComponent from './components/FooterComponent';
 import InsBoardComponent from './components/InsBoardComponent';
 import ListBoardTabulator from './components/ListBoardTabulator';
 import BoardDetailComponent from './components/BoardDetailComponent';
+import UdtBoardComponent from './components/UdtBoardComponent';
 
 function App() {
   return (
@@ -19,9 +20,12 @@ function App() {
             <Route path='/insBoard' element={<InsBoardComponent />} />
             <Route path='/board' element={<ListBoardTabulator />} />
             <Route path='/boardDetail' element={<BoardDetailComponent />} />
+            <Route path='/udtBoard' element={<UdtBoardComponent />} />
           </Routes>
         </div>
-        <FooterComponent />
+        <div style={{ float: 'right', margin: '30px' }}>
+          <FooterComponent />
+        </div>
       </BrowserRouter>
     </div>
   );

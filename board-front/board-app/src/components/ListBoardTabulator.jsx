@@ -11,21 +11,12 @@ class ListBoardTabulator extends Component {
         this.state = {
             tableData: []
         }
-
-        this.insBoard = this.insBoard.bind(this);
     }
-
-    el = React.createRef();
 
     componentDidMount() {
         BoardService.getBoards().then((res) => {
-            // 데이터 받아옴. 
             this.setState({ tableData: res.data });
         });
-    }
-
-    insBoard() {
-        window.location.href = "/insBoard";
     }
 
     render() {
@@ -33,7 +24,7 @@ class ListBoardTabulator extends Component {
             <div>
                 <h2 className='text-center'>Boards List</h2>
                 <div>
-                    <button className='btn btn-primary' onClick={this.insBoard}>글 작성</button>
+                    <button className='btn btn-primary' onClick={()=> { window.location.href="/insBoard" } }>글 작성</button>
                 </div>
                 <div>
                     <ReactTabulator
@@ -49,7 +40,8 @@ class ListBoardTabulator extends Component {
                         layout={"fitColumns"}
                         events={{
                             rowClick: function(e, row) {
-                                window.location.href = "/boardDetail?boardIdx=" + row.getData().boardIdx;
+                                const boardIdx = row.getData().boardIdx;
+                                window.location.href = `/boardDetail?boardIdx=${boardIdx}`;
                             }
                         }}
                         options={{ pagination: 'local', paginationSize: '10' }}

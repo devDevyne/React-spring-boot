@@ -16,6 +16,24 @@ class BoardService {
     getBoardDetail(boardIdx) {
         return axios.get(BOARD_API_BASE_URL + "Detail?boardIdx=" + boardIdx);
     }
+
+    IsEmpty(value) {
+        if(value == "" || value == null || value == undefined || ( value != null && typeof value == "object" && !Object.keys(value).length ) ) {
+            return true;
+        }else {
+            return false;
+        }
+    } 
+
+    boardIsEmpty(board) {
+        for(let i=0; i < board.length; i++) {
+            if(board[i] == "" || board[i] == null || board[i] == undefined || ( board[i] != null && typeof board[i] == "object" && !Object.keys(board[i]).length ) ) {
+                return true;
+            }else {
+                return false;
+            }
+        }
+    }
 }
 
 export default new BoardService();
